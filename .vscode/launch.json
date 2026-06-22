@@ -1,0 +1,51 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations":
+    [
+        {
+        "name": "Debug GDB",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/test", //"program": "${fileDirname}/${fileBasenameNoExtension}
+		"cwd": "${workspaceFolder}", //"cwd": "${fileDirname}",
+		"MIMode": "gdb",
+		"miDebuggerPath": "/usr/bin/gdb",
+		"preLaunchTask": "build-gcc",
+		"stopAtEntry": false,
+		"externalConsole": false,
+		"args": [],
+		"environment": [],
+		"setupCommands": [
+			{
+				"description": "Enable pretty-printing for gdb",
+				"text": "-enable-pretty-printing",
+				"ignoreFailures": true
+			}
+		]
+	},
+	{
+		"name": "Debug LLDB",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/test", //"program": "${fileDirname}/${fileBasenameNoExtension}
+		"cwd": "${workspaceFolder}", //"cwd": "${fileDirname}",
+		"MIMode": "gdb",
+		"miDebuggerPath": "/usr/bin/gdb",
+		"preLaunchTask": "build-clang",
+		"stopAtEntry": false,
+		"externalConsole": false,
+		"args": [],
+		"environment": [],
+		"setupCommands": [
+			{
+				"description": "Enable pretty-printing for gdb",
+				"text": "-enable-pretty-printing",
+				"ignoreFailures": true
+			}
+		]
+	}
+	]
+}
