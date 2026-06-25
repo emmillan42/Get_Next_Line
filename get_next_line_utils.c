@@ -6,11 +6,11 @@
 /*   By: emmmilla <emmmilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:53:21 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/06/23 23:59:21 by emmmilla         ###   ########.fr       */
+/*   Updated: 2026/06/24 22:38:19 by emmmilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -78,4 +78,32 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-char	*ft_strjoin(char *s1, char *s2);
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*join;
+	size_t	i;
+	size_t	j;
+
+	join = malloc(sizeof(*join) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!join)
+	{
+		free(s1);
+		return (NULL);
+	}
+	i = 0;
+	while (s1[i])
+	{
+		join[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		join[i + j] = s2[j];
+		j++;
+	}
+	join[i + j] = '\0';
+	free(s1);
+	return (join);
+}
