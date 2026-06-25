@@ -1,7 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emmmilla <emmmilla@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/25 12:20:30 by emmmilla          #+#    #+#             */
+/*   Updated: 2026/06/25 15:19:59 by emmmilla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "get_next_line.h"
+
+// extern void *__real_malloc(size_t c);
+
+// void	*__wrap_malloc(size_t c)
+// {
+// 	static int counter = 1;
+// 	if (counter--)
+// 		return (__real_malloc(c));
+// 	return (NULL);
+// }
 
 static void	print_line(int line_no, char *line)
 {
@@ -30,7 +52,8 @@ int	main(int argc, char **argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		print_line(line_no++, line);
+		if (line)
+			print_line(line_no++, line);
 		free(line);
 		line = get_next_line(fd);
 	}

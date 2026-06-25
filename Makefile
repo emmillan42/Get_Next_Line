@@ -11,7 +11,7 @@ RM			=	rm -f
 HFILES		=	get_next_line.h
 
 SRCS		=	\
-				main.c \
+				test.c \
 				get_next_line.c \
 				get_next_line_utils.c
 

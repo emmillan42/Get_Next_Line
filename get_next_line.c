@@ -6,7 +6,7 @@
 /*   By: emmmilla <emmmilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 12:27:44 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/06/25 08:46:40 by emmmilla         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:31:05 by emmmilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*extract_line(char *cache)
 	return (ft_substr(cache, 0, i));
 }
 
-static char	*clean_cache(char *cache)
+static char	*clean_cache(char *cache, char *line)
 {
 	char	*new_cache;
 	size_t	i;
@@ -80,7 +80,7 @@ static char	*clean_cache(char *cache)
 	i = 0;
 	while (cache[i] && cache[i] != '\n')
 		i++;
-	if (cache[i] == '\0')
+	if (cache[i] == '\0' || !line)
 	{
 		free(cache);
 		return (NULL);
@@ -116,6 +116,6 @@ char	*get_next_line(int fd)
 	if (!cache)
 		return (NULL);
 	line = extract_line(cache);
-	cache = clean_cache(cache);
+	cache = clean_cache(cache, line);
 	return (line);
 }
