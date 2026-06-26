@@ -6,7 +6,7 @@
 /*   By: emmmilla <emmmilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 12:20:30 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/06/25 15:47:45 by emmmilla         ###   ########.fr       */
+/*   Updated: 2026/06/26 14:30:58 by emmmilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
 // 		return (__real_malloc(c));
 // 	return (NULL);
 // }
+// gcc torturette.c -o gnltest
+// gcc -g -no-pie g*.c test.c
+// ./gnltest ./a.out test.txt
+// valgrind --leak-check=full --show-leak-kinds=all
+/* valgrind --leak-check=full \
+         --show-leak-kinds=all \
+         --track-origins=yes \
+         --verbose \
+         ./a.out test.txt  */
 
 static void	print_line(int line_no, char *line)
 {
