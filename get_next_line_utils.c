@@ -6,7 +6,7 @@
 /*   By: emmmilla <emmmilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:53:21 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/06/24 22:38:19 by emmmilla         ###   ########.fr       */
+/*   Updated: 2026/06/26 17:47:40 by emmmilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strdup(const char *s)
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != (char)c)
+	while (*s != (unsigned char)c)
 	{
 		if (*s == '\0')
 			return (NULL);
