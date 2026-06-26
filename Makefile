@@ -1,7 +1,10 @@
 # -------------------------------- VARIABLES --------------------------------- #
 
-NAME		=	Get_Next_Line
-TEST		=	test
+NAME        = Get_Next_Line
+BONUS_NAME  = Get_Next_Line_Bonus
+
+TEST        = test
+TEST_BONUS  = test_bonus
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror -g
@@ -17,6 +20,15 @@ SRCS		=	\
 
 OBJS 		=	$(SRCS:.c=.o)
 
+BONUS_HFILES = get_next_line_bonus.h
+
+BONUS_SRCS   = \
+				test_bonus.c \
+				get_next_line_bonus.c \
+				get_next_line_utils_bonus.c
+
+BONUS_OBJS   = $(BONUS_SRCS:.c=.o)
+
 # ---------------------------------- RULES ----------------------------------- #
 
 all: $(NAME)
@@ -24,8 +36,13 @@ all: $(NAME)
 $(NAME): $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c $(HFILES)
+%.o: %.c
 			$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 dgdb: $(OBJS)
 			gcc $(CFLAGS) $(OBJS) -o $(TEST)
@@ -33,12 +50,20 @@ dgdb: $(OBJS)
 dlldb: $(OBJS)
 			clang $(CFLAGS) $(OBJS) -o $(TEST)
 
+dgdb_bonus: $(BONUS_OBJS)
+	gcc $(CFLAGS) $(BONUS_OBJS) -o $(TEST)
+
+dlldb_bonus: $(BONUS_OBJS)
+	clang $(CFLAGS) $(BONUS_OBJS) -o $(TEST)
+
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-			$(RM) $(NAME) $(TEST)
+	$(RM) $(NAME) $(BONUS_NAME) $(TEST)
 
 re: fclean all
 
-.PHONY: all clean fclean re dgdb dlldb
+bonus_re: fclean bonus
+
+.PHONY: all bonus clean fclean re bonus_re dgdb dlldb dgdb_bonus dlldb_bonus
